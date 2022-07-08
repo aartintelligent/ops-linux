@@ -29,11 +29,11 @@ for version; do
 
 	export version
 
-	rm -rf "$version"
+	rm -rf "image/$version"
 
 	if jq -e '.[env.version] | not' versions.json > /dev/null; then
 
-		echo "deleting $version ..."
+		echo "deleting image/$version ..."
 
 		continue
 
@@ -55,7 +55,7 @@ for version; do
 
 		export from
 
-		echo "processing $version/$dir ..."
+		echo "processing template image/$version/$dir ..."
 
 		mkdir -p "image/$version/$dir"
 
@@ -67,6 +67,8 @@ for version; do
 		} > "image/$version/$dir/Dockerfile"
 
     cp -a "entrypoint/docker-$version-entrypoint" "image/$version/$dir/docker-entrypoint"
+
+    cp -a "$jqt" "image/$version/$dir/$jqt"
 
 	done
 

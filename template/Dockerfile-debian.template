@@ -27,9 +27,7 @@ rm -rf /etc/apt/sources.list.d/*
 
 ADD docker-entrypoint /
 
-RUN set -eux; \
-wget -qO "jq-template" 'https://github.com/docker-library/bashbrew/raw/1da7341a79651d28fbcc3d14b9176593c4231942/scripts/jq-template.awk'; \
-mv jq-template /usr/bin/jq-template
+ADD jq-template /usr/bin/jq-template
 
 RUN set -eux; \
 mkdir -p \

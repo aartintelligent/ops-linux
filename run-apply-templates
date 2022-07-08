@@ -15,7 +15,7 @@ generated_warning() {
 	EOH
 }
 
-jqt='.jq-template.awk'
+jqt='jq-template'
 
 if [ "$#" -eq 0 ]; then
 

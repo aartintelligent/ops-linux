@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-jqt='.jq-template.awk'
+jqt='jq-template'
 
 wget -qO "$jqt" 'https://github.com/docker-library/bashbrew/raw/1da7341a79651d28fbcc3d14b9176593c4231942/scripts/jq-template.awk'
 

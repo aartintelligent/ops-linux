@@ -1,0 +1,75 @@
+#!/bin/bash
+set -e
+
+[ -f versions.json ] # run "versions.sh" first
+
+generated_warning() {
+	cat <<-EOH
+		#
+		# NOTE: THIS DOCKERFILE IS AUTO GENERATED
+		#
+		# PLEASE DO NOT EDIT IT DIRECTLY.
+		#
+	EOH
+}
+
+jqt='.jq-template.awk'
+
+wget -qO "$jqt" 'https://github.com/docker-library/bashbrew/raw/1da7341a79651d28fbcc3d14b9176593c4231942/scripts/jq-template.awk'
+
+if [ "$#" -eq 0 ]; then
+
+	versions="$(jq -r 'keys | map(@sh) | join(" ")' versions.json)"
+
+	eval "set -- $versions"
+
+fi
+
+for version; do
+
+	export version
+
+	rm -rf "$version"
+
+	if jq -e '.[env.version] | not' versions.json > /dev/null; then
+
+		echo "deleting $version ..."
+
+		continue
+
+	fi
+
+	variants="$(jq -r '.[env.version].variants | map(@sh) | join(" ")' versions.json)"
+
+	eval "variants=( $variants )"
+
+	for dir in "${variants[@]}"; do
+
+		suite="$(dirname "$dir")"
+
+		variant="$(basename "$dir")"
+
+		export suite variant
+
+		from="$version:$suite-slim"
+
+		export from
+
+		echo "processing $version/$dir ..."
+
+		mkdir -p "image/$version/$dir"
+
+		{
+			generated_warning
+
+			gawk -f "$jqt" "template/Dockerfile-$version.template"
+
+		} > "image/$version/$dir/Dockerfile"
+
+    cp -a "entrypoint/docker-$version-entrypoint" "image/$version/$dir/docker-entrypoint"
+
+	done
+
+done
+
+rm -f $jqt

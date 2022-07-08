@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in /docker-entrypoint.d/*; do
+
+  if [ -f "$file" ] && [ -x "$file" ]; then
+
+    bash "$file"
+
+  fi
+
+done
+
+exec "$@"

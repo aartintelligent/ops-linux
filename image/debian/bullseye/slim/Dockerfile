@@ -1,5 +1,6 @@
 #
-# NOTE: THIS DOCKERFILE IS AUTO GENERATED
+# OPS LINUX
+# @see https://github.com/aartintelligent/ops-linux
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #

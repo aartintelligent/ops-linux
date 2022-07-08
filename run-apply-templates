@@ -5,11 +5,12 @@ set -e
 
 generated_warning() {
 	cat <<-EOH
-		#
-		# NOTE: THIS DOCKERFILE IS AUTO GENERATED
-		#
-		# PLEASE DO NOT EDIT IT DIRECTLY.
-		#
+#
+# OPS LINUX
+# @see https://github.com/aartintelligent/ops-linux
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
 	EOH
 }
 

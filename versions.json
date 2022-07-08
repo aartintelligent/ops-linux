@@ -1,9 +1,8 @@
 {
   "debian": {
     "variants": [
-      "bullseye/slim",
-      "buster/slim"
+      "bullseye/1.0.0"
     ],
-    "version": "debian"
+    "version": "debian-1.0.0"
   }
 }

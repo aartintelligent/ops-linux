@@ -45,7 +45,7 @@ for version; do
 
 		echo "processing build image/$version/$dir ..."
 
-		docker build "image/$version/$dir" -t "$DOCKER_REPOSITORY/ops-linux-$version:$suite-$variant-$DOCKER_VERSION"
+		docker build "image/$version/$dir" -t "$DOCKER_REPOSITORY/ops-linux-$version:$suite-$variant-$DOCKER_TAG_VERSION"
 
 	done
 

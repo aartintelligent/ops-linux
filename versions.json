@@ -1,8 +1,9 @@
 {
   "debian": {
     "variants": [
+      "bullseye/slim",
       "buster/slim",
-      "bullseye/slim"
+      "stretch/slim"
     ],
     "version": "debian"
   }

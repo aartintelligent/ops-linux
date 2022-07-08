@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-[ -f versions.json ] # run "versions.sh" first
+[ -f versions.json ]
 
 jqt='jq-template'
 
@@ -45,7 +45,7 @@ for version; do
 
 		echo "processing build image/$version/$dir ..."
 
-    docker build "image/$version/$dir" -t "$version/$suite-$variant:latest" --no-cache
+    docker build "image/$version/$dir" -t "ops-linux/$version-$suite-$variant:latest"
 
 	done
 

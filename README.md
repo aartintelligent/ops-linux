@@ -1,1 +1,1 @@
-# AArtIntelligent : OPS Linux
+# OPS Linux

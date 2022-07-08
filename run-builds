@@ -42,13 +42,13 @@ for version; do
 
 		export suite variant
 
-		from="$version:$suite"
+		from="$version:$variant-slim"
 
 		export from
 
 		echo "processing build image/$version/$dir ..."
 
-		docker build "image/$version/$dir" -t "$DOCKER_REPOSITORY/ops-linux-$version/$suite-$variant"
+		docker build "image/$version/$dir" -t "$DOCKER_REPOSITORY/ops-linux-$version:$suite-$variant" --no-cache
 
 	done
 

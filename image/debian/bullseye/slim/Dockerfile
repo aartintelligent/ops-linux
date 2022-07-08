@@ -45,10 +45,12 @@ mkdir -p \
 chown -R debian:root \
 /home/debian \
 /docker-entrypoint.d \
-/docker-entrypoint; \
+/docker-entrypoint \
+/usr/bin; \
 chmod +x -R \
 /docker-entrypoint.d \
-/docker-entrypoint
+/docker-entrypoint \
+/usr/bin
 
 ENTRYPOINT ["/docker-entrypoint"]
 

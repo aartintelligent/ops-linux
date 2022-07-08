@@ -38,10 +38,12 @@ mkdir -p \
 chown -R {{ env.version }}:root \
 /home/{{ env.version }} \
 /docker-entrypoint.d \
-/docker-entrypoint; \
+/docker-entrypoint \
+/usr/bin; \
 chmod +x -R \
 /docker-entrypoint.d \
-/docker-entrypoint
+/docker-entrypoint \
+/usr/bin
 
 ENTRYPOINT ["/docker-entrypoint"]
 

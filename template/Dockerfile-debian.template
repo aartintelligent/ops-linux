@@ -25,7 +25,7 @@ curl
 RUN set -eux; \
 rm -rf /etc/apt/sources.list.d/*
 
-ADD docker-entrypoint /
+ADD docker-{{ env.version }}-entrypoint /
 
 ADD jq-template /usr/bin/jq-template
 
@@ -36,13 +36,13 @@ mkdir -p \
 chown -R {{ env.version }}:root \
 /home/{{ env.version }} \
 /docker-entrypoint.d \
-/docker-entrypoint \
+/docker-{{ env.version }}-entrypoint \
 /usr/bin; \
 chmod +x -R \
 /docker-entrypoint.d \
-/docker-entrypoint \
+/docker-{{ env.version }}-entrypoint \
 /usr/bin
 
-ENTRYPOINT ["/docker-entrypoint"]
+ENTRYPOINT ["/docker-{{ env.version }}-entrypoint"]
 
 USER {{ env.version }}

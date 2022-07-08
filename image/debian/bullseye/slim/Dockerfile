@@ -1,5 +1,7 @@
 #
-# AARTINTELLIGENT : OPS LINUX
+# AARTINTELLIGENT
+#
+# OPS LINUX
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
@@ -32,7 +34,7 @@ curl
 RUN set -eux; \
 rm -rf /etc/apt/sources.list.d/*
 
-ADD docker-entrypoint /
+ADD docker-debian-entrypoint /
 
 ADD jq-template /usr/bin/jq-template
 
@@ -43,13 +45,13 @@ mkdir -p \
 chown -R debian:root \
 /home/debian \
 /docker-entrypoint.d \
-/docker-entrypoint \
+/docker-debian-entrypoint \
 /usr/bin; \
 chmod +x -R \
 /docker-entrypoint.d \
-/docker-entrypoint \
+/docker-debian-entrypoint \
 /usr/bin
 
-ENTRYPOINT ["/docker-entrypoint"]
+ENTRYPOINT ["/docker-debian-entrypoint"]
 
 USER debian

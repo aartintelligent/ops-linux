@@ -68,7 +68,7 @@ for version; do
 
 		} > "image/$version/$dir/Dockerfile"
 
-    cp -a "entrypoint/docker-$version-entrypoint" "image/$version/$dir/docker-entrypoint"
+    cp -a "entrypoint/docker-$version-entrypoint" "image/$version/$dir/docker-$version-entrypoint"
 
     cp -a "$jqt" "image/$version/$dir/$jqt"
 

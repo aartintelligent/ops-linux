@@ -5,8 +5,6 @@ for file in /docker-entrypoint.d/*; do
 
   if [ -f "$file" ] && [ -x "$file" ]; then
 
-    echo $file
-
     . "$file"
 
   fi

@@ -25,6 +25,7 @@ supervisor \
 htop \
 jq \
 gawk \
+git \
 gnupg \
 gnupg1 \
 gnupg2 \
